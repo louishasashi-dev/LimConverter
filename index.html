@@ -41,6 +41,37 @@
         pointer-events: none;
         z-index: 0;
       }
+  /* Sembunyikan kursor default hanya di area non-input */
+      body:not(.on-input),
+      body:not(.on-input) * {
+        cursor: none;
+      }
+      
+      /* Kursor kustom */
+      .custom-cursor {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #0ff;
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s ease, width 0.2s, height 0.2s, border-color 0.2s;
+        box-shadow: 0 0 8px #0ff;
+        background-color: rgba(0, 255, 255, 0.05);
+      }
+      
+      /* Efek hover pada tombol/link */
+      a:hover ~ .custom-cursor,
+      button:hover ~ .custom-cursor,
+      .convert-btn:hover ~ .custom-cursor {
+        width: 32px;
+        height: 32px;
+        border-color: #f0f;
+        box-shadow: 0 0 12px #f0f;
+      }
+      
       .blob { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; }
       .blob-1 { width: 500px; height: 500px; background: rgba(200,255,0,0.06); top: -150px; right: -100px; }
       .blob-2 { width: 400px; height: 400px; background: rgba(0,229,255,0.05); bottom: -100px; left: -100px; }
@@ -537,18 +568,6 @@
         flex:1; border-radius:2px 2px 0 0; background:var(--border);
         transition:height 0.3s, background 0.3s;
       }
-
-      .custom-cursor {
-  width: 20px;
-  height: 20px;
-  border: 2px solid #0ff;
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.1s ease;
-  box-shadow: 0 0 8px #0ff;
-}
 
       @media (max-width: 600px) {
         .converter-grid, .generic-grid, .crypto-converter-grid { grid-template-columns: 1fr; }
