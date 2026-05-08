@@ -29,6 +29,7 @@
         color: var(--text);
         min-height: 100vh;
         overflow-x: hidden;
+        cursor: none;
       }
       body::before {
         content: "";
@@ -537,6 +538,18 @@
         flex:1; border-radius:2px 2px 0 0; background:var(--border);
         transition:height 0.3s, background 0.3s;
       }
+
+      .custom-cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #0ff;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease;
+  box-shadow: 0 0 8px #0ff;
+}
 
       @media (max-width: 600px) {
         .converter-grid, .generic-grid, .crypto-converter-grid { grid-template-columns: 1fr; }
